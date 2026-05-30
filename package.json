@@ -9,7 +9,8 @@
     "preview": "vite preview",
     "test": "vitest run",
     "test:watch": "vitest",
-    "build:data": "node scripts/build-data.mjs"
+    "build:data": "node scripts/build-data.mjs && node scripts/build-sentences.mjs",
+    "build:sentences": "node scripts/build-sentences.mjs"
   },
   "dependencies": {
     "hanzi-writer": "^3.7.0",
@@ -18,6 +19,7 @@
   },
   "devDependencies": {
     "@vitejs/plugin-react": "^4.3.4",
+    "pinyin-pro": "^3.28.1",
     "vite": "^6.0.7",
     "vitest": "^2.1.8"
   }

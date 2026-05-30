@@ -219,6 +219,36 @@ body {
   min-width: 140px;
 }
 
+/* Example sentence */
+.sentence {
+  background: var(--paper);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 12px 14px;
+  margin-top: 6px;
+}
+
+.sentence-hanzi {
+  font-size: 20px;
+  line-height: 1.5;
+}
+
+.sentence-hanzi .hl {
+  color: var(--accent);
+}
+
+.sentence-pinyin {
+  color: var(--accent);
+  font-size: 14px;
+  margin-top: 4px;
+}
+
+.sentence-eng {
+  color: var(--muted);
+  font-size: 14px;
+  margin-top: 4px;
+}
+
 /* Stroke panel */
 .stroke-box {
   position: relative;

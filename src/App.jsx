@@ -11,10 +11,12 @@ export default function App() {
   // Large datasets load lazily after first paint.
   const [characters, setCharacters] = useState(null)
   const [wordIndex, setWordIndex] = useState({})
+  const [sentences, setSentences] = useState(null)
 
   useEffect(() => {
     import('./data/characters.json').then((m) => setCharacters(m.default))
     import('./data/word-index.json').then((m) => setWordIndex(m.default))
+    import('./data/sentences.json').then((m) => setSentences(m.default))
   }, [])
 
   const results = useMemo(
@@ -48,7 +50,7 @@ export default function App() {
         onSelectWord={(w) => setSelected({ kind: 'word', ...w })}
       />
 
-      <CharacterDetail selected={selected} characters={characters} />
+      <CharacterDetail selected={selected} characters={characters} sentences={sentences} />
     </div>
   )
 }

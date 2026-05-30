@@ -1,6 +1,6 @@
 import StrokePanel from './StrokePanel.jsx'
 
-export default function CharacterDetail({ selected, characters }) {
+export default function CharacterDetail({ selected, characters, sentences }) {
   if (!selected) {
     return (
       <div className="detail detail-empty">
@@ -12,11 +12,44 @@ export default function CharacterDetail({ selected, characters }) {
     )
   }
 
-  if (selected.kind === 'word') return <WordDetail word={selected} />
-  return <SingleCharDetail char={selected.char} data={characters?.[selected.char]} />
+  if (selected.kind === 'word') {
+    return <WordDetail word={selected} sentence={sentences?.words?.[selected.word]} />
+  }
+  return (
+    <SingleCharDetail
+      char={selected.char}
+      data={characters?.[selected.char]}
+      sentence={sentences?.chars?.[selected.char]}
+    />
+  )
 }
 
-function SingleCharDetail({ char, data }) {
+// Render a sentence with every occurrence of `target` highlighted.
+function Highlighted({ text, target }) {
+  if (!target) return text
+  const parts = text.split(target)
+  return parts.flatMap((p, i) =>
+    i < parts.length - 1 ? [p, <b className="hl" key={i}>{target}</b>] : [p],
+  )
+}
+
+function SentenceBlock({ sentence, target }) {
+  if (!sentence) return null
+  return (
+    <section>
+      <div className="label">Example sentence</div>
+      <div className="sentence">
+        <div className="sentence-hanzi">
+          <Highlighted text={sentence.hanzi} target={target} />
+        </div>
+        <div className="sentence-pinyin">{sentence.pinyin}</div>
+        <div className="sentence-eng">{sentence.eng}</div>
+      </div>
+    </section>
+  )
+}
+
+function SingleCharDetail({ char, data, sentence }) {
   const primary = data?.readings?.[0]
   return (
     <div className="detail">
@@ -51,12 +84,14 @@ function SingleCharDetail({ char, data }) {
             </ul>
           </section>
         )}
+
+        <SentenceBlock sentence={sentence} target={char} />
       </div>
     </div>
   )
 }
 
-function WordDetail({ word }) {
+function WordDetail({ word, sentence }) {
   const chars = [...word.word]
   return (
     <div className="word-detail">
@@ -65,6 +100,8 @@ function WordDetail({ word }) {
         <span className="detail-pinyin">{word.pinyin}</span>
       </div>
       <p className="meaning">{word.meaning}</p>
+
+      <SentenceBlock sentence={sentence} target={word.word} />
 
       <div className="label">How to write each character</div>
       <div className="stroke-row">
