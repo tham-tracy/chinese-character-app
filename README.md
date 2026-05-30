@@ -1,5 +1,7 @@
 # Chinese Character Learner
 
+**Live:** https://tham-tracy.github.io/chinese-character-app/
+
 A web app for learning Chinese characters. Type pinyin and get matching
 characters or whole words, with English meanings, example words, and animated
 stroke order you can practice writing yourself.
