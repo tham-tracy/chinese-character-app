@@ -1,0 +1,305 @@
+:root {
+  --bg: #faf8f5;
+  --paper: #ffffff;
+  --ink: #2b2b2b;
+  --muted: #777;
+  --accent: #c0392b;
+  --accent-soft: #f3d9d5;
+  --green: #27ae60;
+  --border: #e6e1da;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif;
+  background: var(--bg);
+  color: var(--ink);
+}
+
+.app {
+  max-width: 860px;
+  margin: 0 auto;
+  padding: 28px 20px 60px;
+}
+
+.app-header h1 {
+  margin: 0;
+  font-size: 26px;
+  letter-spacing: -0.01em;
+}
+
+.tagline {
+  margin: 4px 0 22px;
+  color: var(--muted);
+  font-size: 14px;
+}
+
+/* Search */
+.search-bar {
+  display: flex;
+  gap: 8px;
+  margin-bottom: 18px;
+}
+
+.search-bar input {
+  flex: 1;
+  font-size: 18px;
+  padding: 12px 14px;
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  background: var(--paper);
+  outline: none;
+}
+
+.search-bar input:focus {
+  border-color: var(--accent);
+}
+
+.search-bar button {
+  padding: 0 20px;
+  border: none;
+  border-radius: 10px;
+  background: var(--accent);
+  color: #fff;
+  font-size: 15px;
+  cursor: pointer;
+}
+
+/* Labels */
+.label {
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--muted);
+  margin: 14px 0 8px;
+}
+
+/* Result chips */
+.chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-bottom: 22px;
+}
+
+.chip,
+.word-chip {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  min-width: 60px;
+  padding: 8px 14px;
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  background: var(--paper);
+  cursor: pointer;
+  transition: border-color 0.12s, transform 0.06s;
+}
+
+.word-chip {
+  border-color: #cfe3d4;
+  background: #f4faf5;
+}
+
+.chip:hover,
+.word-chip:hover {
+  border-color: var(--accent);
+}
+
+.chip:active,
+.word-chip:active {
+  transform: translateY(1px);
+}
+
+.chip-active {
+  border-color: var(--accent);
+  background: var(--accent-soft);
+}
+
+.chip-char {
+  font-size: 30px;
+  line-height: 1.1;
+}
+
+.chip-pinyin {
+  font-size: 12px;
+  color: var(--muted);
+}
+
+.no-results {
+  color: var(--muted);
+  margin: 18px 0;
+}
+
+/* Detail */
+.detail {
+  display: flex;
+  gap: 26px;
+  align-items: flex-start;
+  margin-top: 8px;
+}
+
+.detail-empty {
+  color: var(--muted);
+  background: var(--paper);
+  border: 1px dashed var(--border);
+  border-radius: 12px;
+  padding: 28px;
+  text-align: center;
+}
+
+.detail-left {
+  flex: 0 0 auto;
+}
+
+.detail-right {
+  flex: 1;
+  min-width: 0;
+}
+
+.detail-head {
+  display: flex;
+  align-items: baseline;
+  gap: 12px;
+}
+
+.detail-char {
+  font-size: 46px;
+  line-height: 1;
+}
+
+.detail-pinyin {
+  font-size: 20px;
+  color: var(--accent);
+}
+
+.meaning {
+  margin: 10px 0;
+  line-height: 1.5;
+}
+
+.meaning-pinyin {
+  color: var(--accent);
+  font-weight: 600;
+}
+
+.words {
+  list-style: none;
+  padding: 0;
+  margin: 6px 0 0;
+}
+
+.words li {
+  display: flex;
+  align-items: baseline;
+  gap: 10px;
+  padding: 6px 0;
+  border-bottom: 1px solid var(--border);
+  flex-wrap: wrap;
+}
+
+.word-hanzi {
+  font-size: 20px;
+}
+
+.word-pinyin {
+  color: var(--accent);
+  font-size: 14px;
+  min-width: 70px;
+}
+
+.word-meaning {
+  color: var(--muted);
+  font-size: 14px;
+  flex: 1;
+  min-width: 140px;
+}
+
+/* Stroke panel */
+.stroke-box {
+  position: relative;
+  width: 200px;
+  height: 200px;
+  background: var(--paper);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  /* Center cross (田字格), scales with the box size. */
+  background-image: linear-gradient(var(--border) 1px, transparent 1px),
+    linear-gradient(90deg, var(--border) 1px, transparent 1px);
+  background-position: center;
+  background-size: 50% 50%;
+}
+
+/* Word view: a row of per-character stroke panels. */
+.word-detail {
+  margin-top: 8px;
+}
+
+.stroke-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+  margin-top: 8px;
+}
+
+.stroke-target {
+  position: absolute;
+  inset: 0;
+}
+
+.stroke-msg {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 14px;
+  font-size: 13px;
+  color: var(--muted);
+}
+
+.stroke-actions {
+  display: flex;
+  gap: 8px;
+  margin-top: 10px;
+}
+
+.stroke-actions button {
+  flex: 1;
+  padding: 9px 0;
+  border: none;
+  border-radius: 9px;
+  background: var(--accent);
+  color: #fff;
+  font-size: 14px;
+  cursor: pointer;
+}
+
+.stroke-actions button.practice {
+  background: var(--green);
+}
+
+.stroke-actions button:disabled {
+  opacity: 0.45;
+  cursor: default;
+}
+
+/* Responsive */
+@media (max-width: 620px) {
+  .detail {
+    flex-direction: column;
+    align-items: stretch;
+  }
+  .stroke-box {
+    margin: 0 auto;
+  }
+  .stroke-panel {
+    width: 200px;
+    margin: 0 auto;
+  }
+}

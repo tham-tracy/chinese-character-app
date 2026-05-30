@@ -1,0 +1,25 @@
+# Dependencies
+node_modules/
+
+# Build output
+dist/
+dist-ssr/
+
+# Brainstorming companion artifacts
+.superpowers/
+
+# Playwright / verification artifacts
+.playwright-mcp/
+verify-*.png
+
+# Logs
+*.log
+npm-debug.log*
+
+# Editor / OS
+.DS_Store
+.vscode/
+.idea/
+
+# Local data downloads (raw datasets before processing)
+data/raw/
