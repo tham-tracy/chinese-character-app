@@ -27,7 +27,7 @@ export function resolveComponent(char, charactersLookup, mmahByChar) {
   if (mmah) {
     return {
       char,
-      pinyin: (mmah.pinyin && mmah.pinyin[0]) || '',
+      pinyin: mmah.pinyin?.[0] ?? '',
       meaning: mmah.definition || '',
       inApp: false,
     }

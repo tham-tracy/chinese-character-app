@@ -93,4 +93,18 @@ describe('buildEntry', () => {
     expect(buildEntry({ character: '某', decomposition: '⿱甘木' }, charactersLookup, mmahByChar))
       .toBeNull()
   })
+
+  it('omits phonetic when phonetic component cannot be resolved', () => {
+    // '未' is absent from both fixtures, so phonetic resolution returns null.
+    const record = {
+      character: '妹',
+      decomposition: '⿰女未',
+      etymology: { type: 'pictophonetic', semantic: '女', phonetic: '未' },
+    }
+    expect(buildEntry(record, charactersLookup, mmahByChar)).toEqual({
+      type: 'pictophonetic',
+      decomposition: '⿰女未',
+      semantic: { char: '女', pinyin: 'nǚ', meaning: 'woman; female', inApp: true },
+    })
+  })
 })
