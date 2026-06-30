@@ -7,13 +7,18 @@ function Chip({ comp, tag, onSelectChar }) {
     <>
       <span className="comp-char">{comp.char}</span>
       {tag && <span className="comp-tag">{tag}</span>}
-      <span className="comp-pinyin">{comp.pinyin}</span>
-      <span className="comp-meaning">{comp.meaning}</span>
+      {comp.pinyin && <span className="comp-pinyin">{comp.pinyin}</span>}
+      {comp.meaning && <span className="comp-meaning">{comp.meaning}</span>}
     </>
   )
   if (comp.inApp && onSelectChar) {
     return (
-      <button type="button" className="comp-chip comp-chip-link" onClick={() => onSelectChar(comp.char)}>
+      <button
+        type="button"
+        className="comp-chip comp-chip-link"
+        aria-label={`View character ${comp.char}`}
+        onClick={() => onSelectChar(comp.char)}
+      >
         {inner}
       </button>
     )
