@@ -1,6 +1,7 @@
 import StrokePanel from './StrokePanel.jsx'
+import Composition from './Composition.jsx'
 
-export default function CharacterDetail({ selected, characters, sentences }) {
+export default function CharacterDetail({ selected, characters, sentences, components, onSelectChar }) {
   if (!selected) {
     return (
       <div className="detail detail-empty">
@@ -20,6 +21,8 @@ export default function CharacterDetail({ selected, characters, sentences }) {
       char={selected.char}
       data={characters?.[selected.char]}
       sentence={sentences?.chars?.[selected.char]}
+      composition={components?.[selected.char]}
+      onSelectChar={onSelectChar}
     />
   )
 }
@@ -49,7 +52,7 @@ function SentenceBlock({ sentence, target }) {
   )
 }
 
-function SingleCharDetail({ char, data, sentence }) {
+function SingleCharDetail({ char, data, sentence, composition, onSelectChar }) {
   const primary = data?.readings?.[0]
   return (
     <div className="detail">
@@ -69,6 +72,8 @@ function SingleCharDetail({ char, data, sentence }) {
             {r.meanings.slice(0, 4).join('; ')}
           </p>
         ))}
+
+        <Composition data={composition} onSelectChar={onSelectChar} />
 
         {data?.exampleWords?.length > 0 && (
           <section>

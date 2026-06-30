@@ -12,11 +12,13 @@ export default function App() {
   const [characters, setCharacters] = useState(null)
   const [wordIndex, setWordIndex] = useState({})
   const [sentences, setSentences] = useState(null)
+  const [components, setComponents] = useState(null)
 
   useEffect(() => {
     import('./data/characters.json').then((m) => setCharacters(m.default))
     import('./data/word-index.json').then((m) => setWordIndex(m.default))
     import('./data/sentences.json').then((m) => setSentences(m.default))
+    import('./data/components.json').then((m) => setComponents(m.default))
   }, [])
 
   const results = useMemo(
@@ -50,7 +52,13 @@ export default function App() {
         onSelectWord={(w) => setSelected({ kind: 'word', ...w })}
       />
 
-      <CharacterDetail selected={selected} characters={characters} sentences={sentences} />
+      <CharacterDetail
+        selected={selected}
+        characters={characters}
+        sentences={sentences}
+        components={components}
+        onSelectChar={(char) => setSelected({ kind: 'char', char })}
+      />
     </div>
   )
 }
