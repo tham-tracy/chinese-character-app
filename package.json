@@ -9,8 +9,9 @@
     "preview": "vite preview",
     "test": "vitest run",
     "test:watch": "vitest",
-    "build:data": "node scripts/build-data.mjs && node scripts/build-sentences.mjs",
-    "build:sentences": "node scripts/build-sentences.mjs"
+    "build:data": "node scripts/build-data.mjs && node scripts/build-sentences.mjs && node scripts/build-components.mjs",
+    "build:sentences": "node scripts/build-sentences.mjs",
+    "build:components": "node scripts/build-components.mjs"
   },
   "dependencies": {
     "hanzi-writer": "^3.7.0",

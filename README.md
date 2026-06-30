@@ -46,12 +46,14 @@ The app ships with prebuilt data in `src/data/`. To regenerate it:
 #                (save as data/raw/jieba-dict.txt)
 #   - Tatoeba (OPUS): https://object.pouta.csc.fi/OPUS-Tatoeba/v2023-04-12/moses/cmn-en.txt.zip
 #                (unzip to data/raw/Tatoeba.cmn-en.cmn and .en)
+#   - Make Me a Hanzi: https://raw.githubusercontent.com/skishore/makemeahanzi/master/dictionary.txt
+#                (save as data/raw/dictionary.txt)
 npm run build:data
 ```
 
 This selects the ~3,000 most common characters and ~14,000 most common words and
-writes `characters.json`, `pinyin-index.json`, `word-index.json`, and
-`sentences.json`.
+writes `characters.json`, `pinyin-index.json`, `word-index.json`, `sentences.json`,
+and `components.json`.
 
 ## License / data attribution
 
