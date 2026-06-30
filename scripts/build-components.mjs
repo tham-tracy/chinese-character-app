@@ -11,7 +11,7 @@
 //
 // Run with:  npm run build:components
 
-import { readFileSync, writeFileSync, mkdirSync } from 'node:fs'
+import { existsSync, readFileSync, writeFileSync, mkdirSync } from 'node:fs'
 import { fileURLToPath } from 'node:url'
 import { dirname, join } from 'node:path'
 import { buildEntry } from './lib/components.mjs'
@@ -23,7 +23,15 @@ console.log('Reading characters.json...')
 const characters = JSON.parse(readFileSync(join(ROOT, 'src/data/characters.json'), 'utf8'))
 
 console.log('Reading Make Me a Hanzi dictionary...')
-const raw = readFileSync(join(ROOT, 'data/raw/dictionary.txt'), 'utf8')
+const dictPath = join(ROOT, 'data/raw/dictionary.txt')
+if (!existsSync(dictPath)) {
+  console.error(
+    'Missing data/raw/dictionary.txt.\n' +
+      'Download it from https://raw.githubusercontent.com/skishore/makemeahanzi/master/dictionary.txt',
+  )
+  process.exit(1)
+}
+const raw = readFileSync(dictPath, 'utf8')
 const mmahByChar = {}
 for (const line of raw.split('\n')) {
   const trimmed = line.trim()
