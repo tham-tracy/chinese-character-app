@@ -333,3 +333,64 @@ body {
     margin: 0 auto;
   }
 }
+
+/* Character composition ("How it's built") */
+.comp-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.comp-chip {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 2px;
+  padding: 8px 12px;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  background: var(--paper);
+  text-align: left;
+  font: inherit;
+  color: inherit;
+  min-width: 120px;
+}
+
+.comp-chip-link {
+  cursor: pointer;
+}
+
+.comp-chip-link:hover,
+.comp-chip-link:focus-visible {
+  border-color: var(--accent);
+  outline: none;
+}
+
+.comp-char {
+  font-size: 28px;
+  line-height: 1;
+}
+
+.comp-tag {
+  font-size: 10px;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--accent);
+}
+
+.comp-pinyin {
+  color: var(--accent);
+  font-size: 14px;
+}
+
+.comp-meaning {
+  color: var(--muted);
+  font-size: 13px;
+}
+
+.comp-note {
+  margin: 10px 0 0;
+  color: var(--muted);
+  font-size: 14px;
+  line-height: 1.5;
+}
