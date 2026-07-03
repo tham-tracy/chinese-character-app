@@ -60,6 +60,16 @@ describe('loadState / saveState', () => {
     expect(loadState(fakeStorage({ [STORAGE_KEY]: blob }))).toEqual(emptyState())
   })
 
+  it('returns a fresh state when cards is null', () => {
+    const blob = JSON.stringify({ version: 1, cards: null, newIntroduced: { date: null, count: 0 } })
+    expect(loadState(fakeStorage({ [STORAGE_KEY]: blob }))).toEqual(emptyState())
+  })
+
+  it('returns a fresh state when newIntroduced is missing', () => {
+    const blob = JSON.stringify({ version: 1, cards: {} })
+    expect(loadState(fakeStorage({ [STORAGE_KEY]: blob }))).toEqual(emptyState())
+  })
+
   it('round-trips state through storage', () => {
     const storage = fakeStorage()
     const state = { ...emptyState(), cards: { '一个': reviewCard(TODAY) } }

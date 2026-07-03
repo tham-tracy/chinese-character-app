@@ -11,7 +11,11 @@ export function emptyState() {
 export function loadState(storage) {
   try {
     const parsed = JSON.parse(storage.getItem(STORAGE_KEY))
-    if (parsed?.version === 1 && typeof parsed.cards === 'object') return parsed
+    if (
+      parsed?.version === 1 &&
+      parsed.cards && typeof parsed.cards === 'object' &&
+      parsed.newIntroduced && typeof parsed.newIntroduced === 'object'
+    ) return parsed
   } catch {
     // corrupt blob: fall through to a fresh state
   }
