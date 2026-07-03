@@ -199,10 +199,16 @@ export function gradeCard(card, grade, now) {
       c.interval = GRADUATING_INTERVAL
     } else {
       c.status = 'learning'
-      if (grade === 'again') c.step = 0
-      else if (grade === 'good') c.step = c.step + 1
-      // 'hard' repeats the current step
-      c.interval = LEARNING_STEPS_DAYS[c.step]
+      if (grade === 'again') {
+        c.step = 0
+        c.interval = LEARNING_STEPS_DAYS[0]
+      } else if (grade === 'good') {
+        c.interval = LEARNING_STEPS_DAYS[c.step]
+        c.step = c.step + 1
+      } else {
+        // 'hard' repeats the current step
+        c.interval = LEARNING_STEPS_DAYS[c.step]
+      }
     }
     c.due = addDays(now, c.interval)
     return c
