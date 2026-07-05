@@ -398,3 +398,154 @@ body {
   font-size: 14px;
   line-height: 1.5;
 }
+
+/* View nav */
+.view-nav {
+  display: flex;
+  gap: 8px;
+  margin-bottom: 18px;
+}
+
+.view-nav button {
+  padding: 8px 18px;
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  background: var(--paper);
+  color: var(--ink);
+  font-size: 15px;
+  cursor: pointer;
+}
+
+.view-nav button.active {
+  border-color: var(--accent);
+  background: var(--accent-soft);
+}
+
+.study-badge {
+  margin-left: 8px;
+  font-size: 12px;
+  color: var(--accent);
+}
+
+/* Study session */
+.study {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 18px;
+  padding: 20px 0 40px;
+}
+
+.study-progress {
+  font-size: 13px;
+  color: var(--muted);
+}
+
+.study-new-tag {
+  margin-left: 8px;
+  padding: 2px 8px;
+  border-radius: 8px;
+  background: var(--accent-soft);
+  color: var(--accent);
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
+
+.card {
+  width: 100%;
+  max-width: 440px;
+  min-height: 220px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  padding: 28px 20px;
+  background: var(--paper);
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  cursor: pointer;
+}
+
+.card-hanzi {
+  font-size: 56px;
+  line-height: 1.2;
+}
+
+.card-char {
+  border: none;
+  background: none;
+  font-size: 56px;
+  line-height: 1.2;
+  padding: 0 2px;
+  cursor: pointer;
+  color: var(--ink);
+}
+
+.card-char:hover {
+  color: var(--accent);
+}
+
+.card-back {
+  text-align: center;
+}
+
+.card-pinyin {
+  font-size: 22px;
+  color: var(--accent);
+  margin-bottom: 6px;
+}
+
+.card-meaning {
+  font-size: 15px;
+  color: var(--ink);
+}
+
+.show-answer {
+  padding: 12px 28px;
+  border: none;
+  border-radius: 10px;
+  background: var(--accent);
+  color: #fff;
+  font-size: 15px;
+  cursor: pointer;
+}
+
+.grade-row {
+  display: flex;
+  gap: 8px;
+}
+
+.grade-btn {
+  padding: 10px 16px;
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  background: var(--paper);
+  font-size: 14px;
+  cursor: pointer;
+}
+
+.grade-again { color: var(--accent); border-color: var(--accent); }
+.grade-good { color: var(--green); border-color: var(--green); }
+
+.grade-key {
+  display: block;
+  font-size: 10px;
+  color: var(--muted);
+  margin-top: 2px;
+}
+
+.study-done {
+  text-align: center;
+  color: var(--muted);
+}
+
+.study-done-title {
+  font-size: 22px;
+  color: var(--ink);
+}
+
+.study-loading {
+  color: var(--muted);
+}
